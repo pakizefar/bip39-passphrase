@@ -1,14 +1,14 @@
-# BIP39 Tool
+# BIP39 Tool with Personal Passphrase
 
 A tool for converting BIP39 mnemonic phrases to addresses and private keys.
 
 ## Online Version
 
-https://coinomi.com/recovery-phrase-tool.html
+[https://greenhex.net/bip39-personal-standalone.html](https://greenhex.net/bip39-personal-standalone.html "https://greenhex.net/bip39-personal-standalone.html")
 
 ## Standalone offline version
 
-Download `bip39-standalone.html`
+Download `bip39-personal-standalone.html`
 
 Open the file in a browser by double clicking it.
 
@@ -16,10 +16,14 @@ This can be compiled from source using the command `python compile.py`
 
 ## Usage
 
+Enter your personal phrase into the 'Your custom Passphrase' field. Your Bip39 will be re-generated from this.
+
+Or
+
 Enter your BIP39 phrase into the 'BIP39 Phrase' field, or press
 'Generate Random Phrase'
 
-If required, set the derivation path, although the defaults are quite usable.
+If required, set the derivation path, although the defaults are quite usable, just use 'Coin' dropdown to select a coin for which the addresses to be generated. 
 
 See the table for a list of addresses generated from the phrase.
 
@@ -35,7 +39,7 @@ The BIP32 keys can be used at [bip32.org](https://bip32.org) if desired.
 
 ## Making changes
 
-Please do not make modifications to `bip39-standalone.html`, since they will
+Please do not make modifications to `bip39-personal-standalone.html`, since they will
 be overwritten by `compile.py`.
 
 Make changes in `src/*` and apply them using the command `python compile.py`
