@@ -97,7 +97,7 @@
         if (phraseChangeTimeoutEvent != null) {
             clearTimeout(phraseChangeTimeoutEvent);
         }
-        phraseChangeTimeoutEvent = setTimeout(personalPhraseChanged, 400);
+        phraseChangeTimeoutEvent = setTimeout(personalPhraseChanged, 1000);
     }
 	
     function phraseChanged() {
