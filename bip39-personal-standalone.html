@@ -75,7 +75,7 @@
                             <div class="form-group">
                                 <label for="personalPhrase" class="col-sm-2 control-label">Your custom Passphrase</label>
                                 <div class="col-sm-10">
-                                    <textarea id="personalPhrase" rows="2" class="form-control" placeholder="Accepts anything just make it fairly long and complicated."></textarea>
+                                    <textarea id="personalPhrase" rows="2" class="form-control" placeholder="Accepts anything just make it fairly long and complicated. Minimum 10 chars. Beginning and ending spaces (whitespace) are ignored"></textarea>
                                     <div class="row filter-warning text-danger hidden">
                                         <p class="col-sm-12">
                                         <strong>
@@ -18229,9 +18229,21 @@ exports.BigInteger = BigInteger;
 
 	function personalPhraseChanged(){
         DOM.strength.val(24);
-        var personal = DOM.personalPhrase.val();
-        setMnemonicFromPhrase(personal);
-	    hidePending();
+        var personal = DOM.personalPhrase.val().trim();
+		
+		if (personal.length > 9) {
+			setMnemonicFromPhrase(personal);
+			hidePending();
+		} else {
+			clearDisplay();
+			
+			document.forms[1].reset();
+			if (personal.length > 0) {
+				showValidationError('Passphrase too short');
+			} else {
+				hidePending();
+			}
+		}
 	}
 	
     function generateClicked() {
