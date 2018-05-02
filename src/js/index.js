@@ -126,8 +126,20 @@
 	function personalPhraseChanged(){
         DOM.strength.val(24);
         var personal = DOM.personalPhrase.val().trim();
-        setMnemonicFromPhrase(personal);
-	    hidePending();
+		
+		if (personal.length > 9) {
+			setMnemonicFromPhrase(personal);
+			hidePending();
+		} else {
+			clearDisplay();
+			
+			document.forms[1].reset();
+			if (personal.length > 0) {
+				showValidationError('Passphrase too short');
+			} else {
+				hidePending();
+			}
+		}
 	}
 	
     function generateClicked() {
