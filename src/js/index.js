@@ -125,7 +125,7 @@
 
 	function personalPhraseChanged(){
         DOM.strength.val(24);
-        var personal = DOM.personalPhrase.val();
+        var personal = DOM.personalPhrase.val().trim();
         setMnemonicFromPhrase(personal);
 	    hidePending();
 	}
