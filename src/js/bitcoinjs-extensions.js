@@ -699,6 +699,15 @@ bitcoin.networks.etc = {
 };
 
 
+bitcoin.networks.clo = {
+  bip32: {
+    public: 0xffffffff,
+    private: 0xffffffff
+  },
+  pubKeyHash: 0xff,
+  wif: 0xff,
+  ethereum : true
+};
 
 bitcoin.networks.abncoin = {
   magicPrefix: '\x19Abncoin Signed Message:\n',
@@ -1436,4 +1445,48 @@ bitcoin.networks.hush = {
     pubKeyHash:0x1cb8,
     scriptHash:0x1cbd,
     wif: 128
+}
+
+bitcoin.networks.litecoincash = {
+    magicPrefix: '\x19Litecoin Signed Message:\n',
+    bip32: {
+      public: 0x0488b21e,
+      private: 0x0488ade4
+    },
+    pubKeyHash: 28,
+    scriptHash: 50,
+    wif: 176
+}
+
+bitcoin.networks.bitcoinprivate = {
+    magicPrefix: '\x19Zcash Signed Message:\n',
+    bip32: {
+      public: 0x0488b21e,
+      private: 0x0488ade4
+    },
+    pubKeyHash:0x1325,
+    scriptHash:0x13AF,
+    wif: 128
+}
+
+bitcoin.networks.kobocoin = {
+   messagePrefix: '\x18Kobocoin Signed Message:\n',
+   bip32: {
+     public: 0x0488B21E,
+     private: 0x0488ADE4,
+   },
+   pubKeyHash: 0x23,
+   scriptHash: 0x1c,
+   wif: 0xa3,
+}
+
+ bitcoin.networks.komodo = {
+  messagePrefix: '\x18Komodo Signed Message:\n',
+  bip32: {
+    public: 0x0488B21E,
+    private: 0x0488ADE4
+  },
+  pubKeyHash: 0x3c,
+  scriptHash: 0x55,
+  wif: 0xbc
 }
