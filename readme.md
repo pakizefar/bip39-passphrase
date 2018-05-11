@@ -1,3 +1,9 @@
+# UPDATE #
+
+**To keep up with Coinomi great work, I'll have to redesign my solution to separate file to fully isolate changes**
+
+**Technically creating BIP39 recovery phrase from custom phrase (brain wallet) can be totally separate file and potentially just merged during compilation. Worst case scenario two file solution, and copy/paste words from one to the other**
+
 # BIP39 Tool with Personal Passphrase
 
 A tool for converting BIP39 mnemonic phrases to addresses and private keys.
