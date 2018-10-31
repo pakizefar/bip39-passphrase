@@ -707,7 +707,7 @@ it('Allows selection of Bitcoinz', function(done) {
 it('Allows selection of BitCloud', function(done) {
     var params = {
         selectText: "BTDX - BitCloud",
-        firstAddress: "BE9tnWxiR7ALgVhG8LLDi2W9pvtjzZMFoM",
+        firstAddress: "BHbWitXCNgTf1BhsRDNMP186EeibuzmrBi",
     };
     testNetwork(done, params);
 });
@@ -966,7 +966,7 @@ it('Allows selection of Lynx', function(done) {
 it('Allows selection of Megacoin', function(done) {
     var params = {
         selectText: "MEC - Megacoin",
-        firstAddress: "MHHRRPHcF8DvQpEySFF9M6fR8Qv4JH2fFC",
+        firstAddress: "MDfAj9CzkC1HpcUiVGnHp8yKTa7WXgu8AY",
     };
     testNetwork(done, params);
 });
@@ -1092,8 +1092,9 @@ it('Allows selection of Rubycoin', function(done) {
 it('Allows selection of Salus', function(done) {
     var params = {
         selectText: "SLS - Salus",
-        firstAddress: "SgdYBmVytcW2aCYitdegwkUcCU7RSqYokB",
+        firstAddress: "SNzPi1CafHFm3WWjRo43aMgiaEEj3ogjww",
     };
+    testNetwork(done, params);
 });
 it('Allows selection of Smileycoin', function(done) {
     var params = {
@@ -1119,7 +1120,7 @@ it('Allows selection of stash', function(done) {
 it('Allows selection of stash testnet', function(done) {
     var params = {
         selectText: "STASH - Stash Testnet",
-        firstAddress: "YdbhtMuGsPSkE6bPdNTHoFSszQKmK4S5LT",
+        firstAddress: "yWQCTSkUst7ddYuebKsqa1kSoXEjpCkGKR",
     };
     testNetwork(done, params);
 });
@@ -2911,7 +2912,7 @@ it('Can change details while old addresses are still being generated', function(
                 });
         });
     });
-}, generateDelay + 5000);
+}, generateDelay + 10000);
 
 // Github issue 49
 // padding for binary should give length with multiple of 256
