@@ -1703,6 +1703,20 @@
             },
         },
         {
+            name: "BND - Blocknode",
+            onSelect: function() {
+                network = bitcoinjs.bitcoin.networks.blocknode;
+                setHdCoin(2941);
+            },
+        },	
+		{
+            name: "tBND - Blocknode Testnet",
+            onSelect: function() {
+                network = bitcoinjs.bitcoin.networks.blocknode_testnet;
+                setHdCoin(1);
+            },
+        },
+        {
             name: "BRIT - Britcoin",
             onSelect: function() {
                 network = bitcoinjs.bitcoin.networks.britcoin;
@@ -2350,6 +2364,13 @@
             },
         },
         {
+            name: "RVN - Ravencoin",
+            onSelect: function() {
+                network = bitcoinjs.bitcoin.networks.ravencoin;
+                setHdCoin(175);
+            },
+        },
+        {
             name: "RBY - Rubycoin",
             onSelect: function() {
                 network = bitcoinjs.bitcoin.networks.rubycoin;
@@ -2371,6 +2392,13 @@
             },
         },
         {
+          name: "SAFE - Safecoin",
+          onSelect: function() {
+              network = bitcoinjs.bitcoin.networks.safecoin;
+              setHdCoin(19165);
+            },
+        },
+	{
           name: "SLS - Salus",
           onSelect: function() {
               network = bitcoinjs.bitcoin.networks.salus;

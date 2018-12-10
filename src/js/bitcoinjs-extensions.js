@@ -1023,6 +1023,17 @@ bitcoinjs.bitcoin.networks.putincoin = {
   wif: 0xb7,
 };
 
+bitcoinjs.bitcoin.networks.ravencoin = {
+  messagePrefix: '\x16Raven Signed Message:\n',
+  bip32: {
+    public: 0x0488B21E,
+    private: 0x0488ADE4,
+  },
+  pubKeyHash: 0x3c,
+  scriptHash: 0x7a,
+  wif: 0x80,
+};
+
 bitcoinjs.bitcoin.networks.reddcoin = {
   messagePrefix: '\x18Reddcoin Signed Message:\n',
   bip32: {
@@ -1054,6 +1065,17 @@ bitcoinjs.bitcoin.networks.rubycoin = {
   pubKeyHash: 0x3c,
   scriptHash: 0x55,
   wif: 0xbc,
+};
+
+bitcoinjs.bitcoin.networks.safecoin = {
+  messagePrefix: '\x18Safecoin Signed Message:\n',
+  bip32: {
+    public: 0x0488b21e,
+    private: 0x0488ade4,
+  },
+  pubKeyHash: 0x3d,
+  scriptHash: 0x56,
+  wif: 0xbd,
 };
 
 bitcoinjs.bitcoin.networks.salus = {
@@ -1418,4 +1440,26 @@ bitcoinjs.bitcoin.networks.phore = {
   pubKeyHash: 0x37,
   scriptHash: 0x0D,
   wif:  0xD4,
+};
+
+bitcoinjs.bitcoin.networks.blocknode = {
+  messagePrefix: '\x18Blocknode Signed Message:\n',
+  bip32: {
+	public: 0x0488b21e,
+	private: 0x0488ade4
+  },
+  pubKeyHash: 0x19,
+  scriptHash: 0x3F,
+  wif:  0x4b,
+};
+
+bitcoinjs.bitcoin.networks.blocknode_testnet = {
+  messagePrefix: '\x18Blocknode Testnet Signed Message:\n',
+  bip32: {
+	public: 0x043587cf,
+	private: 0x04358394
+  },
+  pubKeyHash: 0x55,
+  scriptHash: 0x7d,
+  wif:  0x89,
 };

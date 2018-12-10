@@ -1068,6 +1068,13 @@ it('Allows selection of Putincoin', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of Ravencoin', function(done) {
+    var params = {
+        selectText: "RVN - Ravencoin",
+        firstAddress: "RBuDoVNnzvFsEcX8XKPm8ic4mgiCzjUCNk",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of Reddcoin', function(done) {
     var params = {
         selectText: "RDD - Reddcoin",
@@ -1345,6 +1352,27 @@ it('Allows selection of Phore', function(done) {
     var params = {
         selectText: "PHR - Phore",
         firstAddress: "PJThxpoXAG6hqrmdeQQbVDX4TJtFTMMymC",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of Safecoin', function(done) {
+     var params = {
+         selectText: "SAFE - Safecoin",
+         firstAddress: "RmV56kPW7jeCmDA8sukHwbR7RZSbg9NFNF",
+     };
+     testNetwork(done, params);
+ });
+it('Allows selection of Blocknode', function(done) {
+    var params = {
+        selectText: "BND - Blocknode",
+        firstAddress: "BG8xZSAur2jYLG9VXt8dYfkKxxeR7w9bSe",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of Blocknode Testnet', function(done) {
+    var params = {
+        selectText: "tBND - Blocknode Testnet",
+        firstAddress: "bSptsFyDktFSKpWveRywJsDoJA2TC6qfHv",
     };
     testNetwork(done, params);
 });
