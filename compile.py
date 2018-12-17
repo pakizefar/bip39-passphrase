@@ -49,8 +49,15 @@ for f in glob.glob("bip39-standalone*.html"):
 # Write the standalone file
 
 hashedWord = hashlib.sha256(page.encode('utf-8')).hexdigest()
+hash = hashedWord[-6:]
 
-f = open('bip39-standalone-' + hashedWord[-6:] + '.html', 'w', encoding="utf-8")
+page = page.replace('Version hash: unknown', 'Version hash: ' + hash)
+
+f = open('bip39-standalone-' + hash + '.html', 'w', encoding="utf-8")
+f.write(page)
+f.close()
+
+f = open('bip39-standalone.html', 'w', encoding="utf-8")
 f.write(page)
 f.close()
 
