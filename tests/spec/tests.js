@@ -998,6 +998,13 @@ it('Allows selection of Neoscoin', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of Nix', function(done) {
+    var params = {
+        selectText: "NIX - NIX Platform",
+        firstAddress: "GgcNW2SQQXB4LWHRQTHKkQF3GzXNSLqS8u",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of Neurocoin', function(done) {
     var params = {
         selectText: "NRO - Neurocoin",
@@ -1365,7 +1372,7 @@ it('Allows selection of Phore', function(done) {
 it('Allows selection of Safecoin', function(done) {
      var params = {
          selectText: "SAFE - Safecoin",
-         firstAddress: "RmV56kPW7jeCmDA8sukHwbR7RZSbg9NFNF",
+         firstAddress: "RtxHpnhJz6RY8k9owP3ua5QWraunmewB1G",
      };
      testNetwork(done, params);
  });
