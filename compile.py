@@ -51,7 +51,9 @@ for f in glob.glob("bip39-standalone*.html"):
 hashedWord = hashlib.sha256(page.encode('utf-8')).hexdigest()
 hash = hashedWord[-6:]
 
-page = page.replace('Version hash: unknown', 'Version hash: ' + hash)
+today = str(datetime.datetime.now().date())
+page = page.replace('%CompileDate%', today)
+page = page.replace('%VersionHash%', hash)
 
 f = open('bip39-standalone-' + hash + '.html', 'w', encoding="utf-8")
 f.write(page)
