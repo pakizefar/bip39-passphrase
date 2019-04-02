@@ -1508,3 +1508,14 @@ bitcoinjs.bitcoin.networks.blockstamp = {
   scriptHash: 0x05,
   wif:  0x80,
 };
+
+bitcoinjs.bitcoin.networks.digitalnote = {
+  messagePrefix: '\x18DigitalNote Signed Message:\n',
+  bip32: {
+    public: 0x0488B21E, 
+    private: 0x0488ADE4,
+  },
+  pubKeyHash: 0x5A,
+  scriptHash: 0x8C,
+  wif:  0x8E,
+};

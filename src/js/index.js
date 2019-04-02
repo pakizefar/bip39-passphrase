@@ -2610,6 +2610,13 @@
                 setHdCoin(65);
             },
         },
+		{
+            name: "XDN - DigitalNote",
+            onSelect: function() {
+                network = bitcoinjs.bitcoin.networks.digitalnote;
+                setHdCoin(505);
+            },
+        },
         {
             name: "XMY - Myriadcoin",
             onSelect: function() {
