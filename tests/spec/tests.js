@@ -474,8 +474,15 @@ it('Allows selection of clam', function(done) {
 });
 it('Allows selection of crown', function(done) {
     var params = {
+        selectText: "CRW - Crown (Legacy)",
+        firstAddress: "18pWSwSUAQdiwMHUfFZB1fM2xue9X1FqE5", 
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of crown', function(done) {
+    var params = {
         selectText: "CRW - Crown",
-        firstAddress: "18pWSwSUAQdiwMHUfFZB1fM2xue9X1FqE5",
+        firstAddress: "CRWKnVmVhvH1KWTYe6sq8xV4dFGcFpBEEkPQ",
     };
     testNetwork(done, params);
 });
@@ -564,6 +571,15 @@ it('Allows selection of bitcoin cash', function(done) {
     };
     testNetwork(done, params);
 });
+
+it('Allows selection of simpleledger(SLP)', function(done) {
+    var params = {
+        selectText: "SLP - Simple Ledger Protocol",
+        firstAddress: "simpleledger:qrtffz6ajfsn74gpur7y3epjquz42pvww5acewqmre",
+    };
+    testNetwork(done, params);
+});
+
 it('Allows selection of myriadcoin', function(done) {
     var params = {
         selectText: "XMY - Myriadcoin",
@@ -991,6 +1007,13 @@ it('Allows selection of Navcoin', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of Nebulas', function(done) {
+    var params = {
+        selectText: "NAS - Nebulas",
+        firstAddress: "n1PbK61DGBfDoDusLw621G6sVSMfLLHdfnm",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of Neoscoin', function(done) {
     var params = {
         selectText: "NEOS - Neoscoin",
@@ -1401,6 +1424,13 @@ it('Allows selection of BlockStamp', function(done) {
     var params = {
         selectText: "BST - BlockStamp",
         firstAddress: "15gypKtim4cVTj137ApfryG17RkvSbPazZ",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of DEXON', function(done) {
+    var params = {
+        selectText: "DXN - DEXON",
+        firstAddress: "0x136a58788033E028CCd740FbDec6734358DB56Ec",
     };
     testNetwork(done, params);
 });
