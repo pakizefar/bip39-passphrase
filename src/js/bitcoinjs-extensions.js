@@ -47,14 +47,14 @@ bitcoinjs.bitcoin.networks.crown = {
 
     var addrBytes = b58.decode(oldAddress);
 
-    var hash160 = new Uint16Array(23); 
+    var hash160 = new Uint16Array(23);
     hash160[0]= 0x01; //C
     hash160[1]= 0x75; //R
     hash160[2]= 0x07; //W
     addrBytes.copy(hash160, 3, 1, 21);
 
     var checksum = bitcoinjs.bitcoin.crypto.hash256(hash160).subarray(0, 4);
-    var binaryAddr = new Uint16Array(27); 
+    var binaryAddr = new Uint16Array(27);
     binaryAddr.set(hash160,0);
     checksum.copy(binaryAddr, 23, 0, 4);
     var newAddress = b58.encode(binaryAddr);
@@ -172,6 +172,17 @@ bitcoinjs.bitcoin.networks.dogecoin = {
   wif: 0x9e
 };
 
+bitcoinjs.bitcoin.networks.dogecointestnet = {
+  messagePrefix: '\x19Dogecoin Signed Message:\n',
+  bip32: {
+    public: 0x043587cf,
+    private: 0x04358394
+  },
+  pubKeyHash: 0x71,
+  scriptHash: 0xc4,
+  wif: 0xf1
+};
+
 bitcoinjs.bitcoin.networks.denarius = {
   messagePrefix: '\x19Denarius Signed Message:\n',
   bip32: {
@@ -260,6 +271,16 @@ bitcoinjs.bitcoin.networks.myriadcoin = {
   wif: 0xb2
 };
 
+bitcoinjs.bitcoin.networks.bolivarcoin = {
+  messagePrefix: 'Bolivarcoin Signed Message:\n',
+  bip32: {
+    public: 0x0488b21e,
+    private: 0x0488ade4
+  },
+  pubKeyHash: 0x55,
+  scriptHash: 0x05,
+  wif: 0xD5
+};
 
 bitcoinjs.bitcoin.networks.onixcoin = {
     messagePrefix: 'ONIX Signed Message:\n',
@@ -304,6 +325,28 @@ bitcoinjs.bitcoin.networks.pivxtestnet = {
   pubKeyHash: 0x8b,
   scriptHash: 0x13,
   wif: 0xef
+};
+
+bitcoinjs.bitcoin.networks.fix = {
+  messagePrefix: 'unused',
+  bip32: {
+    public: 0x022d2533,
+    private: 0x0221312b
+  },
+  pubKeyHash: 0x23,
+  scriptHash: 0x5F,
+  wif: 0x3C
+};
+
+bitcoinjs.bitcoin.networks.fixtestnet = {
+  messagePrefix: 'unused',
+  bip32: {
+    public: 0x3a8061a0,
+    private: 0x3a805837
+  },
+  pubKeyHash: 0x4c,
+  scriptHash: 0x89,
+  wif: 0xED
 };
 
 bitcoinjs.bitcoin.networks.fujicoin = {
@@ -605,7 +648,7 @@ bitcoinjs.bitcoin.networks.diamond = {
 };
 
 bitcoinjs.bitcoin.networks.digibyte = {
-  messagePrefix: '\x18DigiByte Signed Message:\n',
+  messagePrefix: '\x19DigiByte Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
     private: 0x0488ADE4,
@@ -868,6 +911,17 @@ bitcoinjs.bitcoin.networks.linx = {
   wif: 0xcb,
 };
 
+
+bitcoinjs.bitcoin.networks.litecointestnet = {
+  messagePrefix: '\x18Litecoin Signed Message:\n',
+  bip32: {
+    public: 0x043587cf,
+    private: 0x04358394,
+  },
+  pubKeyHash: 0x6f,
+  scriptHash: 0xc4,
+  wif: 0xef,
+};
 bitcoinjs.bitcoin.networks.litecoincash = {
   messagePrefix: '\x18Litecoin Signed Message:\n',
   bip32: {
@@ -1221,6 +1275,28 @@ bitcoinjs.bitcoin.networks.toa = {
   wif: 0xc1,
 };
 
+bitcoinjs.bitcoin.networks.twins = {
+  messagePrefix: 'unused',
+  bip32: {
+    public: 0x022d2533,
+    private: 0x0221312b
+  },
+  pubKeyHash: 0x49,
+  scriptHash: 0x53,
+  wif: 0x42
+};
+
+bitcoinjs.bitcoin.networks.twinstestnet = {
+  messagePrefix: 'unused',
+  bip32: {
+    public: 0x3a8061a0,
+    private: 0x3a805837
+  },
+  pubKeyHash: 0x4c,
+  scriptHash: 0x89,
+  wif: 0xED
+};
+
 bitcoinjs.bitcoin.networks.ultimatesecurecash = {
   messagePrefix: '\x18UltimateSecureCash Signed Message:\n',
   bip32: {
@@ -1386,6 +1462,17 @@ bitcoinjs.bitcoin.networks.hush = {
   wif: 0x80,
 };
 
+bitcoinjs.bitcoin.networks.hush3 = {
+  messagePrefix: '\x18Hush Signed Message:\n',
+  bip32: {
+    public: 0x0488B21E,
+    private: 0x0488ADE4,
+  },
+  pubKeyHash: 0x3C,
+  scriptHash: 0x55,
+  wif: 0xBC,
+};
+
 bitcoinjs.bitcoin.networks.zclassic = {
   messagePrefix: '\x18Zcash Signed Message:\n',
   bip32: {
@@ -1527,4 +1614,38 @@ bitcoinjs.bitcoin.networks.blockstamp = {
   pubKeyHash: 0x00,
   scriptHash: 0x05,
   wif:  0x80,
+};
+
+bitcoinjs.bitcoin.networks.deeponion = {
+    messagePrefix: 'x18DeepOnion Signed Message:\n',
+    bip32: {
+      public: 0x0488B21E,
+      private: 0x0488ADE4,
+    },
+    pubKeyHash: 0x1F,
+    scriptHash: 0x4E,
+    wif: 0x9F,
+};
+
+
+bitcoinjs.bitcoin.networks.cpuchain = {
+    messagePrefix: 'x18CPUchain Signed Message:\n',
+    bip32: {
+      public: 0x0488B21E,
+      private: 0x0488ADE4,
+    },
+    pubKeyHash: 0x1C,
+    scriptHash: 0x1E,
+    wif: 0x80,
+};
+
+bitcoinjs.bitcoin.networks.wagerr = {
+  messagePrefix: 'unused',
+  bip32: {
+    public: 0x022d2533,
+    private: 0x0221312b
+  },
+  pubKeyHash: 0x49,
+  scriptHash: 0x3f,
+  wif: 0xc7
 };

@@ -161,11 +161,11 @@ bitcoinjs.bitcoin.networks.bgold.p2wpkhInP2sh = {
 
 bitcoinjs.bitcoin.networks.digibyte.p2wpkh = {
     baseNetwork: "digibyte",
-    messagePrefix: '\x18DigiByte Signed Message:\n',
+    messagePrefix: 'x19DigiByte Signed Message:\n',
     bech32: 'dgb',
     bip32: {
-        public: 0x0488B21E,
-        private: 0x0488ADE4
+        public: 0x04b24746,
+        private: 0x04b2430c
     },
     pubKeyHash: 0x1e,
     scriptHash: 0x3f,
@@ -174,11 +174,11 @@ bitcoinjs.bitcoin.networks.digibyte.p2wpkh = {
 
 bitcoinjs.bitcoin.networks.digibyte.p2wpkhInP2sh = {
     baseNetwork: "digibyte",	
-    messagePrefix: '\x18DigiByte Signed Message:\n',
+    messagePrefix: '\x19DigiByte Signed Message:\n',
     bech32: 'dgb',
     bip32: {
-        public: 0x0488B21E,
-        private: 0x0488ADE4
+        public: 0x049d7cb2,
+        private: 0x049d7878
     },
     pubKeyHash: 0x1e,
     scriptHash: 0x3f,
@@ -235,5 +235,31 @@ bitcoinjs.bitcoin.networks.nix.p2wpkhInP2sh = {
       pubKeyHash: 0x26,
       scriptHash: 0x35,
       wif: 0x80,
+};
+
+bitcoinjs.bitcoin.networks.cpuchain.p2wpkh = {
+    baseNetwork: "cpuchain",
+    messagePrefix: '\x1DCPUchain Signed Message:\n',
+    bech32: 'cpu',
+    bip32: {
+        public: 0x04b24746,
+        private: 0x04b2430c
+    },
+    pubKeyHash: 0x1c,
+    scriptHash: 0x1e,
+    wif: 0x80,
+};
+
+bitcoinjs.bitcoin.networks.cpuchain.p2wpkhInP2sh = {
+    baseNetwork: "cpuchain",
+    messagePrefix: '\x1DCPUchain Signed Message:\n',
+    bech32: 'cpu',
+    bip32: {
+        public: 0x049d7cb2,
+        private: 0x049d7878
+    },
+    pubKeyHash: 0x1c,
+    scriptHash: 0x1e,
+    wif: 0x80,
 };
 })();

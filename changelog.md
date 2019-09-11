@@ -1,3 +1,28 @@
+# 0.3.12
+
+* Fix typos
+* Fix DigiByte signing message
+* Add DeepOnion network
+* Add EOS network
+* Add LTC testnetwork
+* Add DOGE testnetwork
+* Add Stellar network
+* Add TWINS network
+* Add FIX network
+
+# 0.3.11
+
+* Add NIX network
+* Fix coin parameters for NMC, XMY, CLAM, ONX, LKR
+* Add DEXON network
+* Add Nebulas network
+* Add LSP network
+* Fix Crown network address format
+* Add Ellaism network
+* Add Etheresocial network
+* Add Bolivarcoin network
+* Force spellcheck and autocomplete to be off
+
 # 0.3.10
 
 * Add Phore network

@@ -73,16 +73,23 @@ else if (browser == "chrome") {
 
 // Helper functions
 
-function testNetwork(done, params) {
+function testNetwork(done, params, comparePub = false) {
     var phrase = params.phrase || 'abandon abandon ability';
     driver.findElement(By.css('.phrase'))
         .sendKeys(phrase);
     selectNetwork(params.selectText);
     driver.sleep(generateDelay).then(function() {
-        getFirstAddress(function(address) {
-            expect(address).toBe(params.firstAddress);
-            done();
-        });
+        if (!comparePub) {
+            getFirstAddress(function(address) {
+                expect(address).toBe(params.firstAddress);
+                done();
+            });
+        } else {
+            getFirstPublicKey(function(pubkey) {
+                expect(pubkey).toBe(params.firstPubKey);
+                done();
+            });
+        }
     });
 }
 
@@ -96,6 +103,10 @@ function getFirstRowValue(handler, selector) {
 
 function getFirstAddress(handler) {
     getFirstRowValue(handler, ".address");
+}
+
+function getFirstPublicKey(handler) {
+    getFirstRowValue(handler, ".pubkey");
 }
 
 function getFirstPath(handler) {
@@ -408,6 +419,13 @@ it('Allows selection of litecoin', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of litecoin testnet', function(done) {
+    var params = {
+        selectText: "LTCt - Litecoin Testnet",
+        firstAddress: "mucaU5iiDaJDb69BHLeDv8JFfGiyg2nJKi",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of ripple', function(done) {
     var params = {
         selectText: "XRP - Ripple",
@@ -416,10 +434,25 @@ it('Allows selection of ripple', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of casinocoin', function(done) {
+    var params = {
+        selectText: "CSC - CasinoCoin",
+        firstAddress: "c3P5EUb27Pzk9dcGt4s7zQDQj4sC6Y81mT",
+        phrase: "ill clump only blind unit burden thing track silver cloth review awake useful craft whale all satisfy else trophy sunset walk vanish hope valve",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of dogecoin', function(done) {
     var params = {
         selectText: "DOGE - Dogecoin",
         firstAddress: "DPQH2AtuzkVSG6ovjKk4jbUmZ6iXLpgbJA",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of dogecoin testnet', function(done) {
+    var params = {
+        selectText: "DOGEt - Dogecoin Testnet",
+        firstAddress: "niHnSJKHdwDyDxRMLBJrtNqpvHEsAFWe6B",
     };
     testNetwork(done, params);
 });
@@ -475,7 +508,7 @@ it('Allows selection of clam', function(done) {
 it('Allows selection of crown', function(done) {
     var params = {
         selectText: "CRW - Crown (Legacy)",
-        firstAddress: "18pWSwSUAQdiwMHUfFZB1fM2xue9X1FqE5", 
+        firstAddress: "18pWSwSUAQdiwMHUfFZB1fM2xue9X1FqE5",
     };
     testNetwork(done, params);
 });
@@ -532,6 +565,13 @@ it('Allows selection of lkrcoin', function(done) {
     var params = {
         selectText: "LKR - Lkrcoin",
         firstAddress: "LfbT296e7AEEnn4bYDbL535Nd8P9g98CdJ",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of bolivarcoin', function(done) {
+    var params = {
+        selectText: "BOLI - Bolivarcoin",
+        firstAddress: "bbKzCAUR7hZ3nqfffy7VgrSz8LmAP3S5mK",
     };
     testNetwork(done, params);
 });
@@ -605,6 +645,20 @@ it('Allows selection of maza', function(done) {
     var params = {
         selectText: "MAZA - Maza",
         firstAddress: "MGW4Bmi2NEm4PxSjgeFwhP9vg18JHoRnfw",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of FIX', function(done) {
+    var params = {
+        selectText: "FIX - FIX",
+        firstAddress: "FS5MEU8fs5dUvsaSCSusV8RQtC8j2h3JEh",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of FIX testnet', function(done) {
+    var params = {
+        selectText: "FIX - FIX Testnet",
+        firstAddress: "XpnU1HHdNG5YxvG9Rez4wjmidchxqnZaNa",
     };
     testNetwork(done, params);
 });
@@ -783,6 +837,13 @@ it('Allows selection of Compcoin', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of CPUchain', function(done) {
+    var params = {
+        selectText: "CPU - CPUchain",
+        firstAddress: "CWWkTPkNRdpTDSfPw7gxUt9cEaC5PSsP3Y",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of Crave', function(done) {
     var params = {
         selectText: "CRAVE - Crave",
@@ -845,6 +906,13 @@ it('Allows selection of Einsteinium', function(done) {
         firstAddress: "EVAABm9hXKHk2MpVMbwNakRubFnNha5m8m",
     };
     testNetwork(done, params);
+});
+it('Allows selection of EOSIO', function(done) {
+    var params = {
+        selectText: "EOS - EOSIO",
+        firstPubKey: "EOS692VJTBK3Rmw93onNnpnZ8ZtmE9PdxjDStArvbyzoe11QUTNoy",
+    };
+    testNetwork(done, params, true);
 });
 it('Allows selection of Europecoin', function(done) {
     var params = {
@@ -1070,6 +1138,13 @@ it('Allows selection of Omnicore', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of DeepOnion', function(done) {
+    var params = {
+        selectText: "ONION - DeepOnion",
+        firstAddress: "DYREY7XCFXVqJ3x5UuN43k2JwD2s1kif48",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of Pesobit', function(done) {
     var params = {
         selectText: "PSB - Pesobit",
@@ -1196,6 +1271,20 @@ it('Allows selection of Toa', function(done) {
     };
     testNetwork(done, params);
 });
+it('Allows selection of TWINS', function(done) {
+    var params = {
+        selectText: "TWINS - TWINS",
+        firstAddress: "WPpJnfLLubNmF7HLNxg8d8zH5haxn4wri8",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of TWINS testnet', function(done) {
+    var params = {
+        selectText: "TWINS - TWINS Testnet",
+        firstAddress: "XpnU1HHdNG5YxvG9Rez4wjmidchxqnZaNa",
+    };
+    testNetwork(done, params);
+});
 it('Allows selection of Ultimatesecurecash', function(done) {
     var params = {
         selectText: "USC - Ultimatesecurecash",
@@ -1242,6 +1331,13 @@ it('Allows selection of Vpncoin', function(done) {
     var params = {
         selectText: "VASH - Vpncoin",
         firstAddress: "VoEmH1qXC4TsSgBAStR21QYetwnFqbqCx9",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of VeChain', function(done) {
+    var params = {
+        selectText: "VET - VeChain",
+        firstAddress: "0xdba55B1B6070f3a733D5eDFf35F0da4A00E455F2",
     };
     testNetwork(done, params);
 });
@@ -1345,8 +1441,15 @@ it('Allows selection of Callisto', function(done) {
 });
 it('Allows selection of HUSH', function(done) {
     var params = {
-        selectText: "HUSH - Hush",
+        selectText: "HUSH - Hush (Legacy)",
         firstAddress: "t1g6rLXUnJaiJuu4q4zmJjoa9Gk4fwKpiuA",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of HUSH3', function(done) {
+    var params = {
+        selectText: "HUSH - Hush3",
+        firstAddress: "RXWSQhwvw5jHPGP8bjwJhWoRnMLBnuPDKD",
     };
     testNetwork(done, params);
 });
@@ -1431,6 +1534,34 @@ it('Allows selection of DEXON', function(done) {
     var params = {
         selectText: "DXN - DEXON",
         firstAddress: "0x136a58788033E028CCd740FbDec6734358DB56Ec",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of Ellaism', function(done) {
+    var params = {
+        selectText: "ELLA - Ellaism",
+        firstAddress: "0xa8B0BeA09eeBc41062308546a01d6E544277e2Ca",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of Ethersocial Network', function(done) {
+    var params = {
+        selectText: "ESN - Ethersocial Network",
+        firstAddress: "0x6EE99Be2A0C7F887a71e21C8608ACF0aa0D2b767",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of Stellar', function(done) {
+    var params = {
+        selectText: "XLM - Stellar",
+        firstAddress: "GCUK3NYYUXA2QGN6KU5RR36WAKN3Y5EANZV65XNAWN4XM4CHQ3G4DMO2",
+    };
+    testNetwork(done, params);
+});
+it('Allows selection of Wagerr', function(done) {
+    var params = {
+        selectText: "WGR - Wagerr",
+        firstAddress: "WYiVgQU39VcQxcnacoCiaZHZZLjDCJoS95",
     };
     testNetwork(done, params);
 });
