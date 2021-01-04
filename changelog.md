@@ -1,3 +1,77 @@
+# 0.5.0
+
+* Remove bias from base 6 and base 10 entropy
+* Add notes about card entropy
+* Hide/show split mnemonic cards
+* Fix link to standalone release file
+* Add Scribe network
+* Add Nano network
+* Add TRX network
+* Add Binance Smart Chain network
+* Clean up dependencies for eos-util
+* Update bootstrap to 3.4.1
+* Bump library versions
+
+# 0.4.3
+
+* Add FIO - Foundation for Interwallet Operability
+* Add Argoneum
+* Add CranePay
+* Add Jingtum network
+* Add MOAC
+* Update RSK network
+* Add HandShake
+* Add Sugarchain testnet
+* Fix wording "is a checksum" / "contains a checksum"
+* Fix bech32 prefix for monacoin
+
+# 0.4.2
+
+* Fix ethereum private key format
+
+# 0.4.1
+
+* Fix no loading on chrome with third-party cookies blocked
+* Add EtherCore
+* Add RSK network
+* Add DeepOnion segwit parameters
+* Fix ethereum xpub derivation
+
+# 0.4.0
+
+* Third party libraries deduplicated and minified
+* Add text reminder for multibit wallet change addresses
+* Seed field can be edited
+* Add bitcoin regtest parameters
+* Mnemonic conversion to entropy is hex encoded instead of binary
+* Entropy type can be manually selected
+* Add Bitcoin P2WSH and P2WSH-P2SH
+* Add Czech language
+
+# 0.3.14
+
+* Ethereum uses standard BIP44 as per majority of wallets (Issue 378)
+
+# 0.3.13
+
+* Add Thought network
+* Add Energyweb network
+* Add Elastos network
+* Add Groestlcoin
+* Fix for syscoin network
+* Add BSV, RPD, MONKEY, ARYA
+* Rename Zencash to Horizen
+* Update Hush network
+* Add CasinoCoin
+* Add CPUchain
+* Add Wagerr
+* Add VeChain
+* Option to not use 'change' field for ethereum networks in bip45
+* Add segwit parameters for MONKEY, BCA, BTC, MONA, SYS, VIA, DOGEt, LTCt
+* Convert mnemonic back to raw entropy
+* Add 2-of-3 phrase cards
+* Move position of hardened addresses checkbox to address table
+
 # 0.3.12
 
 * Fix typos

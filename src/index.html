@@ -3,7 +3,7 @@
     <head lang="en">
         <meta charset="utf-8" />
         <title>BIP39 - Mnemonic Code</title>
-        <link rel="stylesheet" href="css/bootstrap-3.3.7.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/app.css">
         <meta content="Mnemonic code for generating deterministic keys" name="description"/>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -15,7 +15,7 @@
         <div class="container">
 
             <h1 class="text-center">Mnemonic Code Converter</h1>
-            <p class="version">v0.3.12</p>
+            <p class="version">v0.5.0</p>
 			<div class="text-center">Compilation Date: <b>%CompileDate%</b> Version hash: <b>%VersionHash%</b></div>
             <hr>
             <div class="row">
@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <div class="col-sm-2"></div>
                             <div class="col-sm-10">
-                                <p>You can enter an existing BIP39 mnemonic, or generate a new random one. Typing your own twelve words will probably not work how you expect, since the words require a particular structure (the last word is a checksum).</p>
+                                <p>You can enter an existing BIP39 mnemonic, or generate a new random one. Typing your own twelve words will probably not work how you expect, since the words require a particular structure (the last word contains a checksum).</p>
                                 <p>
                                     For more info see the
                                     <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki" target="_blank">BIP39 spec</a>.
@@ -87,7 +87,7 @@
                                     <div class="row">
                                         <label class="col-sm-3 control-label">Entropy Type</label>
                                         <div class="type col-sm-3 form-control-static"></div>
-                                        <label class="col-sm-3 control-label">Bits Per Event</label>
+                                        <label class="col-sm-3 control-label">Avg Bits Per Event</label>
                                         <div class="bits-per-event col-sm-3 form-control-static"></div>
                                     </div>
                                     <div class="row">
@@ -124,12 +124,42 @@
                                 <div class="col-sm-3">
                                     <p>Valid entropy values include:</p>
                                     <ul>
-                                        <li><strong>Binary</strong> [0-1]<br>101010011</li>
-                                        <li><strong>Base 6</strong> [0-5]<br>123434014</li>
-                                        <li><strong>Dice</strong> [1-6]<br>62535634</li>
-                                        <li><strong>Base 10</strong> [0-9]<br>90834528</li>
-                                        <li><strong>Hex</strong> [0-9A-F]<br>4187a8bfd9</li>
-                                        <li><strong>Card</strong> [A2-9TJQK][CDHS]<br>ahqs9dtc</li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="entropy-type" value="binary">
+                                                <strong>Binary</strong> [0-1]<br>101010011
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="entropy-type" value="base 6">
+                                                <strong>Base 6</strong> [0-5]<br>123434014
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="entropy-type" value="dice">
+                                                <strong>Dice</strong> [1-6]<br>62535634
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="entropy-type" value="base 10">
+                                                <strong>Base 10</strong> [0-9]<br>90834528
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="entropy-type" value="hexadecimal" checked>
+                                                <strong>Hex</strong> [0-9A-F]<br>4187a8bfd9
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="entropy-type" value="card">
+                                                <strong>Card</strong> [A2-9TJQK][CDHS]<br>ahqs9dtc
+                                            </label>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -164,6 +194,7 @@
                                     <a href="#french"  title="French">Français</a>
                                     <a href="#italian"  title="Italian">Italiano</a>
                                     <a href="#korean"  title="Korean">한국어</a>
+                                    <a href="#czech" title="Czech">Čeština</a>
                                 </div>
                             </div>
                         </div>
@@ -171,6 +202,25 @@
                             <label for="phrase" class="col-sm-2 control-label">BIP39 Mnemonic</label>
                             <div class="col-sm-10">
                                 <textarea id="phrase" class="phrase private-data form-control" data-show-qr autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div  class="splitMnemonic hidden">
+                                <label for="phrase" class="col-sm-2 control-label">BIP39 Split Mnemonic</label>
+                                <div class="col-sm-10">
+                                    <textarea id="phraseSplit" class="phraseSplit private-data form-control" title="Only 2 of 3 cards needed to recover." rows="3"></textarea>
+                                    <p class="help-block">
+                                        <span id="phraseSplitWarn" class="phraseSplitWarn"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                            </div>
+                            <div class="col-sm-10">
+                                <label class="control-label text-weight-normal">
+                                    <input type="checkbox" class="showSplitMnemonic">
+                                    Show split mnemonic cards
+                                </label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -182,7 +232,7 @@
                         <div class="form-group">
                             <label for="seed" class="col-sm-2 control-label">BIP39 Seed</label>
                             <div class="col-sm-10">
-                                <textarea id="seed" class="seed private-data form-control" readonly="readonly" data-show-qr autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                                <textarea id="seed" class="seed private-data form-control" data-show-qr autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -199,6 +249,112 @@
                                 <textarea id="root-key" class="root-key private-data form-control" data-show-qr autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <label class="control-label text-weight-normal">
+                                    <input type="checkbox" class="showBip85" />
+                                    Show BIP85
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group bip85 hidden">
+                            <div class="form-group text-danger">
+                                <label class="col-sm-2 control-label">Warning</label>
+                                <div class="col-sm-10 form-control-static">
+                                    This is an advanced feature and should only be used if you understand what it does.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2"></label>
+                                <div class="col-sm-10">
+                                    <p>
+                                    The value of the "BIP85 Child Key" field shown below is not used
+                                    elsewhere on this page. It can be used as a new key.
+                                    </p>
+                                    <p>
+                                    In case of the BIP39 application, you can paste it into the "BIP39 Mnemonic"
+                                    field to use it as a new mnemonic.
+                                    </p>
+                                    <p>
+                                    Please read the
+                                    <a href="https://github.com/bitcoin/bips/blob/master/bip-0085.mediawiki" target="_blank">
+                                        BIP85 spec
+                                    </a>
+                                    for more information.
+                                    </p>
+                                </div>
+                            </p>
+                            <label for="bip85-application" class="col-sm-2 control-label">BIP85 Application</label>
+                            <div class="col-sm-10">
+                                <select id="bip85-application" class="form-control">
+                                    <option value="bip39" selected>BIP39</option>
+                                    <option value="wif">WIF</option>
+                                    <option value="xprv">Xprv</option>
+                                    <option value="hex">Hex</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group bip85 bip85-mnemonic-language-input hidden">
+                            <label for="bip85-mnemonic-language" class="col-sm-2 control-label">BIP85 Mnemonic Language</label>
+                            <div class="col-sm-10 languages">
+                                <select id="bip85-mnemonic-language" class="strength form-control">
+                                    <option value="0" selected>English</option>
+                                    <!--<option value="1">日本語</option>
+                                    <option value="2">한국어</option>
+                                    <option value="3">Español</option>
+                                    <option value="4">中文(简体)</option>
+                                    <option value="5">中文(繁體)</option>
+                                    <option value="6">Français</option>
+                                    <option value="7">Italiano</option>
+                                    <option value="8">Čeština</option>-->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group bip85 bip85-mnemonic-length-input hidden">
+                            <label for="bip85-mnemonic-length" class="col-sm-2 control-label">BIP85 Mnemonic Length</label>
+                            <div class="col-sm-10">
+                                <select id="bip85-mnemonic-length" class="strength form-control">
+                                    <option value="12" selected>12</option>
+                                    <option value="18">18</option>
+                                    <option value="24">24</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group bip85 hidden">
+                            <span class="bip85-bytes-input">
+                                <label for="bip85-bytes" class="col-sm-2 control-label">BIP85 Bytes</label>
+                                <div class="col-sm-10">
+                                    <input id="bip85-bytes" type="text" class="change form-control" value="64" />
+                                </div>
+                            </span>
+                        </div>
+
+                        <div class="form-group bip85 bip85-index-input hidden">
+                            <label for="bip85-index" class="col-sm-2 control-label">BIP85 Index</label>
+                            <div class="col-sm-10">
+                                <input id="bip85-index" type="text" class="change form-control" value="0" />
+                            </div>
+                        </div>
+
+                        <div class="form-group bip85 hidden">
+                            <label for="phrase" class="col-sm-2 control-label">BIP85 Child Key</label>
+                            <div class="col-sm-10">
+                                <textarea
+                                    id="bip85Field"
+                                    data-show-qr
+                                    class="bip85Field private-data form-control"
+                                    title="BIP85 Child Key"
+                                    rows="3"
+                                ></textarea>
+                            </div>
+                        </div>
+
                         <div class="form-group litecoin-ltub-container hidden">
                             <label for="litecoin-use-ltub" class="col-sm-2 control-label">Prefixes</label>
                             <div class="col-sm-10 checkbox">
@@ -274,7 +430,7 @@
                                         <a href="https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki#change" target="_blank">External / Internal</a>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input id="change-bip44" type="text" class="change form-control" value="0">
+                                      <input id="change-bip44" type="text" class="change form-control" value="0">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -341,13 +497,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-2"></div>
-                                    <label class="col-sm-10">
-                                        <input class="hardened-addresses" type="checkbox">
-                                        <span>Use hardened addresses</span>
-                                    </label>
-                                </div>
-                                <div class="form-group">
                                     <label for="core-path" class="col-sm-2 control-label">Bitcoin Core</label>
                                     <div class="col-sm-10">
                                         <p class="form-control no-border">
@@ -364,6 +513,7 @@
                                     <div class="col-sm-10">
                                         <p class="form-control no-border">
                                             <span>Use path <code>m/0'/0</code>.</span>
+                                            <span>For change addresses use path <code>m/0'/1</code>.</span>
                                         </p>
                                         <p class="form-control no-border">
                                             <span>For more info see</span>
@@ -507,6 +657,8 @@
                                             <select class="form-control bip141-semantics">
                                                 <option value="p2wpkh">P2WPKH</option>
                                                 <option value="p2wpkh-p2sh" selected>P2WPKH nested in P2SH</option>
+                                                <option value="p2wsh">P2WSH (1-of-1 multisig)</option>
+                                                <option value="p2wsh-p2sh">P2WSH nested in P2SH (1-of-1 multisig)</option>
                                             </select>
                                         </div>
                                     </div>
@@ -658,6 +810,14 @@
                         <span>Enabling BIP38 means each key will take several minutes to generate.</span>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="checkbox">
+                        <label>
+                            <input class="hardened-addresses" type="checkbox">
+                            <span>Use hardened addresses</span>
+                        </label>
+                    </div>
+                </div>
                 <ul class="addresses-type nav nav-tabs" role="tablist">
                     <li id="table-tab" class="active">
                         <a href="#table" role="tab" data-toggle="tab">Table</a>
@@ -749,6 +909,11 @@
                         Read more at the
                         <a href="https://github.com/bitcoin/bips/blob/master/bip-0049.mediawiki" target="_blank">official BIP49 spec</a>
                     </p>
+                    <h3>BIP85 <span class="small">Deterministic Entropy From BIP32 Keychains</span></h3>
+                    <p>
+                        Read more at the
+                        <a href="https://github.com/bitcoin/bips/blob/master/bip-0085.mediawiki" target="_blank">official BIP85 spec</a>
+                    </p>
                     <h3 id="entropy-notes">Entropy</h3>
                     <p>
                         <span>Entropy values should not include the BIP39 checksum. This is automatically added by the tool.</span>
@@ -784,6 +949,19 @@
                     </p>
                     <p>
                         <a href="https://bitcointalk.org/index.php?topic=311000.msg3345309#msg3345309" target="_blank">You are not a good source of entropy.</a>
+                    </p>
+                    <p>
+                        <span>Card entropy has been implemented assuming cards are replaced, not drawn one after another.</span>
+                        <span>A full deck with replacement generates 232 bits of entropy (21 words). A full deck without replacement generates 225 bits of entropy (21 words).</span>
+                        <span>Card entropy changed significantly from v0.4.3 to v0.5.0. The old version can be accessed at
+                            <a href="https://github.com/iancoleman/bip39/releases/tag/0.4.3">
+                                https://github.com/iancoleman/bip39/releases/tag/0.4.3
+                            </a>
+                            or
+                            <a href="https://web.archive.org/web/20201018232020/https://iancoleman.io/bip39/">
+                                https://web.archive.org/web/20201018232020/https://iancoleman.io/bip39/
+                            </a>
+                        </span>
                     </p>
                     <h3>License</h3>
                     <p>
@@ -828,9 +1006,9 @@
                     on any offline computer.
                     </p>
                     <p>
-                    <span>Alternatively, download the file from the repository</span>
+                    <span>Alternatively, download the file from the latest GitHub release</span>
                     -
-                    <a href="https://github.com/iancoleman/bip39">https://github.com/iancoleman/bip39</a>
+                    <a href="https://github.com/iancoleman/bip39/releases/latest/">https://github.com/iancoleman/bip39/releases/latest/</a>
                     </p>
 
                 </div>
@@ -914,23 +1092,16 @@
                 <td class="privkey private-data"><span data-show-qr></span></td>
             </tr>
         </script>
-        <script src="js/polyfill.es6.js"></script>
-        <script src="js/basex.js"></script>
-        <script src="js/unorm.js"></script>
         <script src="js/jquery-3.2.1.js"></script>
-        <script src="js/bootstrap-3.3.7.js"></script>
-        <script src="js/levenshtein.js"></script>
-        <script src="js/kjua-0.1.1.min.js"></script>
-        <script src="js/bitcoinjs-3.3.2.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/bip39-libs.js"></script>
         <script src="js/bitcoinjs-extensions.js"></script>
-        <script src="js/bitcoinjs-bip38-2.0.2.js"></script>
         <script src="js/segwit-parameters.js"></script>
-        <script src="js/ethereumjs-util.js"></script>
         <script src="js/ripple-util.js"></script>
+        <script src="js/jingtum-util.js"></script>
         <script src="js/casinocoin-util.js"></script>
-        <script src="js/bchaddrjs-0.2.1.js"></script>
-        <script src="js/nebulas-account.js"></script>
         <script src="js/eos-util.js"></script>
+        <script src="js/fio-util.js"></script>
         <script src="js/sjcl-bip39.js"></script>
         <script src="js/wordlist_english.js"></script>
         <script src="js/wordlist_japanese.js"></script>
@@ -940,11 +1111,9 @@
         <script src="js/wordlist_french.js"></script>
         <script src="js/wordlist_italian.js"></script>
         <script src="js/wordlist_korean.js"></script>
+        <script src="js/wordlist_czech.js"></script>
         <script src="js/jsbip39.js"></script>
-        <script src="js/biginteger.js"></script>
-        <script src="js/zxcvbn.js"></script>
         <script src="js/entropy.js"></script>
-        <script src="js/stellar-util.js"></script>
         <script src="js/index.js"></script>
     </body>
 </html>
